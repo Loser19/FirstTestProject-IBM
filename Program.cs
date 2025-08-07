@@ -6,7 +6,45 @@ Console.WriteLine("welcome to C#");
 //VariableDeclarationdemo();
 //PersonDetails();
 //LoopsDemo();
-Studentand5SubjectDemo();
+//Studentand5SubjectDemo();
+//TwoDimensionArraydemo();
+//JaggedArraysdemo();
+
+static void JaggedArraysdemo()
+{
+    int[][] jaggedArray = new int[3][];
+    jaggedArray[0] = new int[] { 1, 2, 3 };
+    jaggedArray[1] = new int[] { 4, 5, 6, 7 };
+    jaggedArray[2] = new int[] { 8, 9 };
+    for (int i = 0; i < jaggedArray.Length; i++)
+    {
+        for (int j = 0; j < jaggedArray[i].Length; j++)
+        {
+            Console.Write(jaggedArray[i][j] + " ");
+        }
+        Console.WriteLine();
+    }
+}
+
+
+static void TwoDimensionArraydemo()
+{
+    int[,] twoDimensionalArray = new int[3, 3]
+{
+    { 1, 2, 3 },
+    { 4, 5, 6 },
+    { 7, 8, 9 }
+};
+    for (int i = 0; i < twoDimensionalArray.GetLength(0); i++)
+    {
+        for (int j = 0; j < twoDimensionalArray.GetLength(1); j++)
+        {
+            Console.Write(twoDimensionalArray[i, j] + " ");
+        }
+        Console.WriteLine();
+    }
+
+}
 
 static void Studentand5SubjectDemo()
 {
