@@ -1,6 +1,9 @@
 ﻿// See https://aka.ms/new-console-template for more informationusing FirstTestProject_IBM;
 using FirstTestProject_IBM;
 
+Console.WriteLine("                                 ATTENTION!! Everything you see here is done by CO-PILOT");
+Console.WriteLine();
+
 //Console.WriteLine(int.MinValue + " " + int.MaxValue);
 //Console.WriteLine(long.MinValue + " " + int.MaxValue);
 //Console.WriteLine(float.MinValue + " " + int.MaxValue);
@@ -18,6 +21,49 @@ using FirstTestProject_IBM;
 //JaggedArraysdemo();
 //EmployeeDemoProgram();
 //ProductDemo();
+//PersonDetailsDemo();
+
+InheritanceDemo1();
+static void InheritanceDemo1()
+{
+    InheritanceDemo1 employeee = new InheritanceDemo1();
+    Console.WriteLine("Please enter your Employee ID: ");
+    employeee.EmployeeID = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("Please enter your Employee Name: ");
+    employeee.Name = Console.ReadLine();
+    Console.WriteLine("Please enter your Employee Age: ");
+    employeee.Age = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("Please enter your Employee Address: ");
+    employeee.Address = Console.ReadLine();
+    Console.WriteLine("Please enter your Employee Phone Number: ");
+    employeee.PhoneNumber = Console.ReadLine();
+    Console.WriteLine("Please enter your Employee Email: ");
+    employeee.Email = Console.ReadLine();
+    Console.WriteLine("Please enter your Employee Occupation: ");
+    employeee.Occupation = Console.ReadLine();
+    Console.WriteLine("Please enter your Employee Department: ");
+    employeee.Department = Console.ReadLine();
+    employeee.DisplayPersonDetails();
+    employeee.DisplayEmployeeDetails();
+}
+
+
+static void PersonDetailsDemo()
+{
+    // Create and set details directly (no user input)
+    PersonDetails person = new PersonDetails();
+    person.UpdatePersonDetails(
+        name: "Alice Johnson",
+        age: 30,
+        address: "123 Main Street, Springfield",
+        phoneNumber: "555-1234",
+        email: "alice.johnson@example.com",
+        occupation: "Software Engineer"
+    );
+
+    Console.WriteLine("--- Person Details ---");
+    person.DisplayPersonDetails();
+}
 
 
 static void EmployeeDemoProgram()
