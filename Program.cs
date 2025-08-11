@@ -25,7 +25,104 @@ Console.WriteLine();
 //InheritanceDemo1();  :- Normal Inheritance Demo ( Person Details - > Employee Details )
 //EBookDemo(); :- Multiple Inheritance Demo ( Library Item - > Book - > EBook )
 //MagazineDemo(); 
-//HierarchicalInheritanceDemo(); :- Hierarchical Inheritance Demo ( Book - > Magazine, EBook )
+//HierarchicalInheritanceDemo(); 
+//TechnoPrenureDemo();
+//GenericCollectionDemo();
+
+static void GenericCollectionDemo() // Generic Collections Demo
+{
+    GenericCollections genericCollections = new GenericCollections();
+    Console.Write("How many numbers you want to add: ");
+    int count = Convert.ToInt32(Console.ReadLine());
+    for (int i = 0; i < count; i++)
+    {
+        Console.Write($"Enter number {i + 1}: ");
+        int number = Convert.ToInt32(Console.ReadLine());
+        genericCollections.AddNumber(number);
+    }
+    genericCollections.DisplayNumbers();// to diaplay the numbers added to the list
+    Console.WriteLine("Please enter the number you want to remove: ");
+    int numberToRemove = Convert.ToInt32(Console.ReadLine());
+    genericCollections.RemoveNumber(numberToRemove); // to remove the number from the list
+    genericCollections.DisplayNumbers(); // to display the numbers after removing the specified number
+    Console.WriteLine("Do you want to clear all numbers? (yes/no)");
+    string clearChoice = Console.ReadLine()?.ToLower();
+    if (clearChoice == "yes")
+    {
+        genericCollections.ClearNumbers(); // to clear all numbers from the list
+        genericCollections.DisplayNumbers(); // to display the numbers after clearing the list
+    }
+    else
+    {
+        Console.WriteLine("You chose not to clear the numbers.");
+    }
+    Console.Write("How many names you want to add: ");
+    int nameCount = Convert.ToInt32(Console.ReadLine());
+    for (int i = 0; i < nameCount; i++)
+    {
+        Console.Write($"Enter name {i + 1}: ");
+        string name = Console.ReadLine();
+        genericCollections.AddName(name);
+    }
+    genericCollections.DisplayNames(); // to display the names added to the list
+    Console.WriteLine("\nPlease enter the name you want to remove: ");
+    string nameToRemove = Console.ReadLine();
+    genericCollections.RemoveName(nameToRemove); // to remove the name from the list
+    genericCollections.DisplayNames(); // to display the names after removing the specified name
+    Console.WriteLine("\nDo you want to clear all names? (yes/no)");
+    string nameClearChoice = Console.ReadLine()?.ToLower();
+    if (nameClearChoice == "yes")
+    {
+        genericCollections.ClearNames(); // to clear all names from the list
+        genericCollections.DisplayNames(); // to display the names after clearing the list
+    }
+    else
+    {
+        Console.WriteLine("You chose not to clear the names.");
+    }
+    Console.WriteLine("Please enter the number of Person Details you want to add: ");
+    int personCount = Convert.ToInt32(Console.ReadLine());
+    for (int i = 0; i < personCount; i++)
+    {
+        Console.WriteLine($"\nEnter details for Person #{i + 1}:");
+        Console.Write("Name: ");
+        string name = Console.ReadLine();
+        Console.Write("Age: ");
+        int age = int.TryParse(Console.ReadLine(), out int parsedAge) ? parsedAge : 0;
+        Console.Write("Address: ");
+        string address = Console.ReadLine();
+        Console.Write("Phone Number: ");
+        string phoneNumber = Console.ReadLine();
+        Console.Write("Email: ");
+        string email = Console.ReadLine();
+        Console.Write("Occupation: ");
+        string occupation = Console.ReadLine();
+        PersonDetails personDetails = new PersonDetails(name, age, address, phoneNumber, email, occupation);
+        genericCollections.personDetails.Add(personDetails);
+        genericCollections.personDetails.Add(personDetails);
+    }
+    Console.WriteLine("Please enter the index of the Person Details you want to remove: ");
+    int indexToRemove = int.TryParse(Console.ReadLine(), out int parsedIndex) ? parsedIndex : -1;
+    if (indexToRemove >= 0 && indexToRemove < genericCollections.personDetails.Count)
+    {
+        genericCollections.personDetails.RemoveAt(indexToRemove); // to remove the person details at the specified index
+        Console.WriteLine($"Person Details at index {indexToRemove} removed successfully.");
+    }
+    else
+    {
+        Console.WriteLine("Invalid index. No Person Details removed.");
+    }
+    Console.WriteLine("Please enter the index of the Person Details you want to display: ");
+    int indexToDisplay = int.TryParse(Console.ReadLine(), out int parsedDisplayIndex) ? parsedDisplayIndex : -1;
+    if (indexToDisplay >= 0 && indexToDisplay < genericCollections.personDetails.Count)
+    {
+        PersonDetails personToDisplay = genericCollections.personDetails[indexToDisplay];
+        personToDisplay.DisplayPersonDetails(); // to display the person details at the specified index
+    }
+    else
+    {
+        Console.WriteLine("Invalid index. No Person Details displayed.");
+    }
 
 TechnoPrenureDemo();
 
@@ -124,9 +221,6 @@ static void HierarchicalInheritanceDemo() //:- Hierarchical Inheritance Demo ( B
     Console.WriteLine("\n--- Magazine Information ---");
     magazine.DisplayInfo();
 }
-
-// Call this in your Main or at the top level:
-HierarchicalInheritanceDemo();
 
 static void MagazineDemo() 
 {
@@ -229,8 +323,6 @@ static void EmployeeDemoProgram()
     employeeDemo.RunEmployeeDemo();
 }
 
-
-
 static void JaggedArraysdemo()
 {
     int[][] jaggedArray = new int[3][];
@@ -266,7 +358,6 @@ static void TwoDimensionArraydemo()
     }
 
 }
-
 static void Studentand5SubjectDemo()
 {
     Studentand5Subjects student = new Studentand5Subjects();
@@ -299,8 +390,6 @@ static void LoopsDemo()
     loops.DoWhileLoopExample();
 }
 
-//int result = Calculator();
-//Console.WriteLine($"The result is: {result}");
 static int Calculator()
 {
     Calculator calculator = new Calculator();
@@ -340,7 +429,6 @@ static int Calculator()
     //Console.WriteLine($"The result of {operation}ing {firstNumber} and {secondNumber} is: {result}");
     return result;
 }
-
 static void VariableDeclarationdemo()
 {
     int number = 10;
@@ -351,7 +439,6 @@ static void VariableDeclarationdemo()
     // previous type of variable incorporation
     Console.WriteLine("Number: {0} and {1}", number, greeting);
 }
-
 static void PersonDetails()
 {
     Console.WriteLine("Please enter your name: ");
