@@ -22,9 +22,166 @@ Console.WriteLine();
 //EmployeeDemoProgram();
 //ProductDemo();
 //PersonDetailsDemo();
+//InheritanceDemo1();  :- Normal Inheritance Demo ( Person Details - > Employee Details )
+//EBookDemo(); :- Multiple Inheritance Demo ( Library Item - > Book - > EBook )
+//MagazineDemo(); 
+//HierarchicalInheritanceDemo(); :- Hierarchical Inheritance Demo ( Book - > Magazine, EBook )
 
-InheritanceDemo1();
-static void InheritanceDemo1()
+TechnoPrenureDemo();
+
+static void TechnoPrenureDemo() // Interface concept using multiple inheritance
+{
+    TechnoPrenure technoPrenure = new TechnoPrenure();
+
+    Console.WriteLine("Please enter Entrepreneur ID: ");
+    technoPrenure.EntrepreneurId = int.TryParse(Console.ReadLine(), out int eid) ? eid : 0;
+
+    Console.WriteLine("Please enter Name: ");
+    technoPrenure.Name = Console.ReadLine();
+
+    Console.WriteLine("Please enter Age: ");
+    technoPrenure.Age = int.TryParse(Console.ReadLine(), out int age) ? age : 0;
+
+    Console.WriteLine("Please enter Address: ");
+    technoPrenure.Address = Console.ReadLine();
+
+    Console.WriteLine("Please enter Phone Number: ");
+    technoPrenure.PhoneNumber = Console.ReadLine();
+
+    Console.WriteLine("Please enter Email: ");
+    technoPrenure.Email = Console.ReadLine();
+
+    Console.WriteLine("Please enter Occupation: ");
+    technoPrenure.Occupation = Console.ReadLine();
+
+    Console.WriteLine("Please enter Business Name: ");
+    technoPrenure.BusinessName = Console.ReadLine();
+
+    Console.WriteLine("Please enter Business Type: ");
+    technoPrenure.BusinessType = Console.ReadLine();
+
+    Console.WriteLine("Please enter Business Location: ");
+    technoPrenure.Location = Console.ReadLine();
+
+    Console.WriteLine("Please enter Investment Amount: ");
+    technoPrenure.InvestmentAmount = double.TryParse(Console.ReadLine(), out double invest) ? invest : 0;
+
+    Console.WriteLine("Please enter Years in Business: ");
+    technoPrenure.YearsInBusiness = int.TryParse(Console.ReadLine(), out int years) ? years : 0;
+
+    Console.WriteLine("\n--- TechnoPrenure Details ---");
+    technoPrenure.DisplayEntroprenurDetails();
+}
+
+
+static void HierarchicalInheritanceDemo() //:- Hierarchical Inheritance Demo ( Book - > Magazine, EBook )
+{
+    Console.WriteLine("=== EBook Entry ===");
+    EBook ebook = new EBook();
+
+    Console.Write("Enter EBook Title: ");
+    ebook.Title = Console.ReadLine();
+
+    Console.Write("Enter Publisher: ");
+    ebook.Publisher = Console.ReadLine();
+
+    Console.Write("Enter Author: ");
+    ebook.Author = Console.ReadLine();
+
+    Console.Write("Enter ISBN: ");
+    ebook.ISBN = Console.ReadLine();
+
+    Console.Write("Enter File Format: ");
+    ebook.FileFormat = Console.ReadLine();
+
+    Console.Write("Enter File Size (MB): ");
+    ebook.FileSizeMB = double.TryParse(Console.ReadLine(), out double size) ? size : 0;
+
+    Console.WriteLine("\n--- EBook Information ---");
+    ebook.DisplayInfo();
+
+    Console.WriteLine("\n=== Magazine Entry ===");
+    Magazine magazine = new Magazine();
+
+    Console.Write("Enter Magazine Title: ");
+    magazine.Title = Console.ReadLine();
+
+    Console.Write("Enter Publisher: ");
+    magazine.Publisher = Console.ReadLine();
+
+    Console.Write("Enter Author: ");
+    magazine.Author = Console.ReadLine();
+
+    Console.Write("Enter ISBN: ");
+    magazine.ISBN = Console.ReadLine();
+
+    Console.Write("Enter Issue Number: ");
+    magazine.IssueNumber = int.TryParse(Console.ReadLine(), out int issue) ? issue : 0;
+
+    Console.Write("Enter Month: ");
+    magazine.Month = Console.ReadLine();
+
+    Console.WriteLine("\n--- Magazine Information ---");
+    magazine.DisplayInfo();
+}
+
+// Call this in your Main or at the top level:
+HierarchicalInheritanceDemo();
+
+static void MagazineDemo() 
+{
+    Magazine magazine = new Magazine();
+
+    Console.WriteLine("Please enter the Magazine Title: ");
+    magazine.Title = Console.ReadLine();
+
+    Console.WriteLine("Please enter the Publisher: ");
+    magazine.Publisher = Console.ReadLine();
+
+    Console.WriteLine("Please enter the Author: ");
+    magazine.Author = Console.ReadLine();
+
+    Console.WriteLine("Please enter the ISBN: ");
+    magazine.ISBN = Console.ReadLine();
+
+    Console.WriteLine("Please enter the Issue Number: ");
+    magazine.IssueNumber = int.TryParse(Console.ReadLine(), out int issue) ? issue : 0;
+
+    Console.WriteLine("Please enter the Month: ");
+    magazine.Month = Console.ReadLine();
+
+    Console.WriteLine("\n--- Magazine Information ---");
+    magazine.DisplayInfo();
+}
+
+static void EBookDemo() // Multiple Inheritance Demo ( Library Item - > Book - > EBook )
+{
+    EBook ebook = new EBook();
+
+    Console.WriteLine("Please enter the EBook Title: ");
+    ebook.Title = Console.ReadLine();
+
+    Console.WriteLine("Please enter the Publisher: ");
+    ebook.Publisher = Console.ReadLine();
+
+    Console.WriteLine("Please enter the Author: ");
+    ebook.Author = Console.ReadLine();
+
+    Console.WriteLine("Please enter the ISBN: ");
+    ebook.ISBN = Console.ReadLine();
+
+    Console.WriteLine("Please enter the File Format: ");
+    ebook.FileFormat = Console.ReadLine();
+
+    Console.WriteLine("Please enter the File Size (MB): ");
+    ebook.FileSizeMB = double.TryParse(Console.ReadLine(), out double size) ? size : 0;
+
+    Console.WriteLine("\n--- EBook Information ---");
+    ebook.DisplayInfo();
+}
+
+
+static void InheritanceDemo1() // Normal Inheritance Demo ( Person Details - > Employee Details )
 {
     InheritanceDemo1 employeee = new InheritanceDemo1();
     Console.WriteLine("Please enter your Employee ID: ");
@@ -208,8 +365,8 @@ static void PersonDetails()
     int age = Convert.ToInt32(Console.ReadLine());
     Console.WriteLine($"Hello, {name} from {city}, you are {age} years old! ");
 }
-    static void ProductDemo()
-    {
+static void ProductDemo()
+{
         Console.Write("How many Products you want to Manage? ");
         int productCount;
         while (!int.TryParse(Console.ReadLine(), out productCount) || productCount <= 0)
@@ -340,4 +497,4 @@ static void PersonDetails()
             }
         EndProductMenu:;
         }
-    }
+}
