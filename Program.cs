@@ -208,12 +208,6 @@ static void PersonDetails()
     int age = Convert.ToInt32(Console.ReadLine());
     Console.WriteLine($"Hello, {name} from {city}, you are {age} years old! ");
 }
-
-
-
-
-
-
     static void ProductDemo()
     {
         Console.Write("How many Products you want to Manage? ");
