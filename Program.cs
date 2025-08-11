@@ -3,6 +3,8 @@ using FirstTestProject_IBM;
 
 Console.WriteLine("                                 ATTENTION!! Everything you see here is done by CO-PILOT");
 Console.WriteLine();
+Console.WriteLine();
+Console.WriteLine();
 
 //Console.WriteLine(int.MinValue + " " + int.MaxValue);
 //Console.WriteLine(long.MinValue + " " + int.MaxValue);
@@ -22,12 +24,185 @@ Console.WriteLine();
 //EmployeeDemoProgram();
 //ProductDemo();
 //PersonDetailsDemo();
-//InheritanceDemo1();  :- Normal Inheritance Demo ( Person Details - > Employee Details )
-//EBookDemo(); :- Multiple Inheritance Demo ( Library Item - > Book - > EBook )
+//InheritanceDemo1();  
+//EBookDemo(); 
 //MagazineDemo(); 
 //HierarchicalInheritanceDemo(); 
 //TechnoPrenureDemo();
 //GenericCollectionDemo();
+//ShapeDemo();
+//DeleDemo();
+//AnonymousMethodDemo();
+//GenericQueueDemo();
+//GenericStackDemo();
+//GenericDictionaryDemo();
+
+static void GenericDictionaryDemo()
+{
+    // Create an instance of GenericDictionary with int as key and PersonDetails as value
+    GenericDictionary<int, PersonDetails> personDictionary = new GenericDictionary<int, PersonDetails>();
+
+    Console.Write("Enter number of persons to add to the dictionary: ");
+    int count = Convert.ToInt32(Console.ReadLine());
+    for (int i = 0; i < count; i++)
+    {
+        Console.WriteLine($"\nEnter details for Person {i + 1}:");
+        Console.Write("Enter Key (unique integer): ");
+        int key = int.TryParse(Console.ReadLine(), out int parsedKey) ? parsedKey : i + 1;
+
+        Console.Write("Name: ");
+        string name = Console.ReadLine();
+        Console.Write("Age: ");
+        int age = int.TryParse(Console.ReadLine(), out int parsedAge) ? parsedAge : 0;
+        Console.Write("Address: ");
+        string address = Console.ReadLine();
+        Console.Write("Phone Number: ");
+        string phoneNumber = Console.ReadLine();
+        Console.Write("Email: ");
+        string email = Console.ReadLine();
+        Console.Write("Occupation: ");
+        string occupation = Console.ReadLine();
+
+        PersonDetails person = new PersonDetails(name, age, address, phoneNumber, email, occupation);
+        personDictionary.Add(key, person);
+    }
+
+    // Displaying the dictionary contents
+    Console.WriteLine("\n--- Dictionary Contents ---");
+    personDictionary.DisplayDict();
+
+    // Removing an entry
+    Console.Write("\nEnter the key of the person to remove: ");
+    int removeKey = int.TryParse(Console.ReadLine(), out int parsedRemoveKey) ? parsedRemoveKey : -1;
+    personDictionary.Remove(removeKey);
+
+    // Displaying the dictionary after removal
+    Console.WriteLine("\n--- Dictionary After Removal ---");
+    personDictionary.DisplayDict();
+
+}
+
+static void GenericStackDemo()
+{
+    // Create an instance of GenericStack for PersonDetails objects
+    GenericStack<PersonDetails> personStack = new GenericStack<PersonDetails>();
+
+    // Adding PersonDetails objects to the stack
+    Console.WriteLine("Enter number of persons to add to the stack:");
+    int count = Convert.ToInt32(Console.ReadLine());
+    for (int i = 0; i < count; i++)
+    {
+        Console.WriteLine($"Enter details for Person {i + 1}:");
+        Console.WriteLine("Enter Name:");
+        string name = Console.ReadLine();
+        Console.WriteLine("Enter Age:");
+        int age = int.TryParse(Console.ReadLine(), out int parsedAge) ? parsedAge : 0;
+        Console.WriteLine("Enter Address:");
+        string address = Console.ReadLine();
+        Console.WriteLine("Enter Phone Number:");
+        string phoneNumber = Console.ReadLine();
+        Console.WriteLine("Enter Email:");
+        string email = Console.ReadLine();
+        Console.WriteLine("Enter Occupation:");
+        string occupation = Console.ReadLine();
+
+        // Create a new PersonDetails object
+        PersonDetails person = new PersonDetails(name, age, address, phoneNumber, email, occupation);
+        personStack.PushItem(person);
+    }
+
+    // Displaying the stack contents
+    personStack.DisplayStack();
+
+    // Popping a PersonDetails object from the stack
+    Console.WriteLine("Popping a person from the stack:");
+    personStack.PopItem(); // pops the last person added to the stack
+
+    // Displaying the stack contents after popping
+    personStack.DisplayStack();
+}
+
+static void GenericQueueDemo()
+{
+    // Create an instance of GenericQueue for PersonDetails objects
+    GenericQueue<PersonDetails> personQueue = new GenericQueue<PersonDetails>();
+
+    // Adding PersonDetails objects to the queue
+    Console.WriteLine("Enter number of persons to add to the queue:");
+    int count = Convert.ToInt32(Console.ReadLine());
+    for (int i = 0; i < count; i++)
+    {
+        Console.WriteLine($"Enter details for Person {i + 1}:");
+        Console.WriteLine("Enter Name:");
+        string name = Console.ReadLine();
+        Console.WriteLine("Enter Age:");
+        int age = int.TryParse(Console.ReadLine(), out int parsedAge) ? parsedAge : 0;
+        Console.WriteLine("Enter Address:");
+        string address = Console.ReadLine();
+        Console.WriteLine("Enter Phone Number:");
+        string phoneNumber = Console.ReadLine();
+        Console.WriteLine("Enter Email:");
+        string email = Console.ReadLine();
+        Console.WriteLine("Enter Occupation:");
+        string occupation = Console.ReadLine();
+
+        // Create a new PersonDetails object
+        PersonDetails person = new PersonDetails(name, age, address, phoneNumber, email, occupation);
+        personQueue.EnqueueItem(person);
+    }
+
+    // Displaying the queue contents
+    personQueue.DisplayQueue();
+
+    // Dequeuing a PersonDetails object from the queue
+    Console.WriteLine("Dequeuing a person from the queue:");
+    personQueue.DequeueItem(); // dequeues the first person added to the queue
+
+    // Displaying the queue contents after dequeuing
+    personQueue.DisplayQueue();
+}
+
+static void AnonymousMethodDemo() // Anonymous Method Demo
+{
+    GreetingsDelegate obj = delegate (string name)
+    {
+        return name;
+    };
+    string str = obj.Invoke("Sounak");
+    Console.WriteLine(str);
+
+}
+static void DeleDemo() // using delegates and multicast delegates, also events
+{
+    
+    DelegatesDemo delegatesDemo = new DelegatesDemo();
+    CalcDelegate calcDelegate = new CalcDelegate(delegatesDemo.Sum); // Assigning the Sum method to the delegate
+     // Invoking the delegate with parameters
+    calcDelegate += delegatesDemo.Multiply; // Adding the Multiply method to the delegate
+    calcDelegate(10, 20);                                       // Invoking the delegate
+    calcDelegate(5, 10); // This will call both Sum and Multiply methods
+                                                                // delegatesDemo.Sum(10, 20);
+                                                                //delegatesDemo.Multiply(1, 3);
+                                                                // DelegatesDemo delegatesDemo = new DelegatesDemo();
+    delegatesDemo.Subscribe(message => Console.WriteLine($"Received Message: {message}"));
+    delegatesDemo.TriggerEvent("This is a test message after subsribing");
+    delegatesDemo.Unsubscribe(message => Console.WriteLine($"Received Message: {message}"));
+}
+
+static void ShapeDemo() // Generic Class Demo
+{
+    Console.Write("Enter rectangle length: ");
+    double length = double.TryParse(Console.ReadLine(), out double l) ? l : 0;
+
+    Console.Write("Enter rectangle width: ");
+    double width = double.TryParse(Console.ReadLine(), out double w) ? w : 0;
+
+    Rectangle rect = new Rectangle(length, width);
+    Shape<Rectangle> shape = new Shape<Rectangle>();
+    shape.ShapeName = rect;
+
+    Console.WriteLine($"Shape Details: {shape.ShapeName}");
+}
 
 static void GenericCollectionDemo() // Generic Collections Demo
 {
@@ -124,7 +299,7 @@ static void GenericCollectionDemo() // Generic Collections Demo
         Console.WriteLine("Invalid index. No Person Details displayed.");
     }
 
-TechnoPrenureDemo();
+}
 
 static void TechnoPrenureDemo() // Interface concept using multiple inheritance
 {
